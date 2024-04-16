@@ -25,6 +25,7 @@ luci-app-watchcat
 luci-app-wol
 luci-mod-admin-full
 luci-proto-ppp
+luci-lib-ipkg
 
 Estadisticas
 ============
