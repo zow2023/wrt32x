@@ -6,12 +6,12 @@ LUCI:
 ====
 luci-app-acme
 luci-app-banip
-luci-app-bcp38
+NO luci-app-bcp38
 NO luci-app-dockerman
   NO docker-compose
   NO dockerd
 luci-app-ddns
-luci-app-hd-idle
+NO luci-app-hd-idle
 luci-app-https-dns-proxy
 luci-app-irqbalance
 luci-app-nft-qos
@@ -22,7 +22,7 @@ luci-app-samba4
 luci-app-sqm
 luci-app-upnp
 luci-app-watchcat
-luci-app-wol
+NO luci-app-wol
 luci-mod-admin-full
 luci-proto-ppp
 luci-lib-ipkg
@@ -33,10 +33,11 @@ luci-app-statistics
 collectd-mod-cpufreq
 collectd-mod-ethstat
 collectd-mod-iptables
-collectd-mod-sensors
+NO collectd-mod-sensors
 collectd-mod-syslog
 collectd-mod-vmem
 collectd-mod-wireless
+collectd-mod-thermal
 luci-app-vnstat2
 luci-app-nlbwmon
 htop
