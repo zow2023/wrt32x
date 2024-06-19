@@ -33,10 +33,10 @@ echo $uploadKbps
 #change value after -gt to only apply SQM if the result greate than X (in kbps)
 if [ "$downloadKbps" -gt 10000 ] && [ "$uploadKbps" -gt 10000 ]; then
  echo "setting up SQM with new value"
- uci set sqm.pppoe-wan.upload=${uploadKbps%%.*}
- uci set sqm.pppoe-wan.download=${downloadKbps%%.*}
+ uci set sqm.eth1.upload=${uploadKbps%%.*}
+ uci set sqm.eth1.download=${downloadKbps%%.*}
  uci commit sqm
  /etc/init.d/sqm reload
- echo "auto sqm DONE!"
+ echo "auto sqm DONE --> Set sqm.eth1.upload="${uploadKbps%%.*}" / sqm.eth1.download="${downloadKbps%%.*}
  logger -t autoSQM -p info "Set download = $downloadKbps, upload = $uploadKbps"
 fi
