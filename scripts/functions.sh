@@ -42,7 +42,7 @@ echo "DISABLED: Changing default luci-theme-bootstap to luci-theme-opentomato"
 ###  Modify the default login IP address OpenWrt
 MODIFY_DEFAULT_IP() {
 echo "DISABLED: Changing default IP adress"
-#sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
+#sed -i 's/192.168.1.1/10.0.0.1/g' package/base-files/files/bin/config_generate
 }
 
 ### Modify default PassWord
@@ -71,7 +71,7 @@ sed -i 's/KERNEL_TESTING_PATCHVER:=5.10/KERNEL_TESTING_PATCHVER:=5.4/g' target/l
 ### Change the time zone
 CHANGE_TIMEZONE() {
 echo "DISABLED: Changing default time zone"
-#sed -i "s/'UTC'/'CST-8'\n        set system.@system[-1].zonename='America/New York'/g" package/base-files/files/bin/config_generate
+#sed -i "s/'UTC'/'CST-8'\n        set system.@system[-1].zonename='Asia/Shanghai'/g" package/base-files/files/bin/config_generate
 }
 
 ### ------------------------------------------------------------------------------------------------------- ###
@@ -108,7 +108,7 @@ CLONE_OPENWRT_SOURCE() {
     df -hT "$PWD"
 
     URL=https://github.com/openwrt/openwrt.git
-    BRANCH=master
+    BRANCH=v22.03.5
     git_clone "$URL" "$BRANCH" openwrt
     ln -sf /workdir/openwrt "$GITHUB_WORKSPACE"/openwrt
     return
