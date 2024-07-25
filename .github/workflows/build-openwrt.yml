@@ -206,8 +206,9 @@ jobs:
           df -hT $PWD
           URL=$CLONE_URL
           BRANCH=$CLONE_BRANCH
-          git clone "$URL" -b "$BRANCH" openwrt
-          git checkout "$ebb3faf31f7c34d71e8ffbf3e8d94bf92086188e" openwrt
+          COMMIT_HASH="ebb3faf31f7c34d71e8ffbf3e8d94bf92086188e"
+          git clone "$URL" -b "$BRANCH" --single-branch --depth 1 openwrt
+          git checkout "$COMMIT_HASH"
           ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
 ### ----------------------------------------------------------------- ###
       - name: Set build key
