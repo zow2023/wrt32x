@@ -206,7 +206,7 @@ jobs:
           df -hT $PWD
           URL=$CLONE_URL
           BRANCH=$CLONE_BRANCH
-          git clone "$URL" -b "$BRANCH" openwr
+          git clone "$URL" -b "$BRANCH" openwrt
           ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
 ### ----------------------------------------------------------------- ###
       - name: Set build key
