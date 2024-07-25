@@ -207,8 +207,7 @@ jobs:
           URL=$CLONE_URL
           BRANCH=$CLONE_BRANCH
           COMMIT_HASH=$COMMIT_HASH
-          git clone "$URL" -b "$BRANCH" --single-branch --depth 1 openwrt
-          git checkout "$COMMIT_HASH"
+          git clone "$URL" -b "$BRANCH" --single-branch --depth 1 openwr
           ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
 ### ----------------------------------------------------------------- ###
       - name: Set build key
