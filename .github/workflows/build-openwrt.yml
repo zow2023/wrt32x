@@ -206,7 +206,7 @@ jobs:
           df -hT $PWD
           URL=$CLONE_URL
           BRANCH=$CLONE_BRANCH
-          COMMIT_HASH="ebb3faf31f7c34d71e8ffbf3e8d94bf92086188e"
+          COMMIT_HASH=$COMMIT_HASH
           git clone "$URL" -b "$BRANCH" --single-branch --depth 1 openwrt
           git checkout "$COMMIT_HASH"
           ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
