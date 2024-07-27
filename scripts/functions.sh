@@ -66,7 +66,7 @@ echo "DISABLED: Changing default hostname"
 #MODIFY_DEFAULT_KERNEL_VERSION() {
 #sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.4/g' target/linux/mvebu/Makefile
 #sed -i 's/KERNEL_TESTING_PATCHVER:=5.10/KERNEL_TESTING_PATCHVER:=5.4/g' target/linux/mvebu/Makefile
-}
+#}
 
 ### Change the time zone
 CHANGE_TIMEZONE() {
