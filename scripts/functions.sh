@@ -58,14 +58,14 @@ echo "DISABLED: Changing default hostname"
 }
 
 ###  version replace
-MODIFY_DEFAULT_VERSION() {
-sed -i 's/-SNAPSHOT/.5/g' include/version.mk
+#MODIFY_DEFAULT_VERSION() {
+#sed -i 's/-SNAPSHOT/.5/g' include/version.mk
 }
 
 ###  Modify the kernel version
-MODIFY_DEFAULT_KERNEL_VERSION() {
-sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.4/g' target/linux/mvebu/Makefile
-sed -i 's/KERNEL_TESTING_PATCHVER:=5.10/KERNEL_TESTING_PATCHVER:=5.4/g' target/linux/mvebu/Makefile
+#MODIFY_DEFAULT_KERNEL_VERSION() {
+#sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.4/g' target/linux/mvebu/Makefile
+#sed -i 's/KERNEL_TESTING_PATCHVER:=5.10/KERNEL_TESTING_PATCHVER:=5.4/g' target/linux/mvebu/Makefile
 }
 
 ### Change the time zone
