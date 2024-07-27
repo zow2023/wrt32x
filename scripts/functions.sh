@@ -60,7 +60,7 @@ echo "DISABLED: Changing default hostname"
 ###  version replace
 #MODIFY_DEFAULT_VERSION() {
 #sed -i 's/-SNAPSHOT/.5/g' include/version.mk
-}
+#}
 
 ###  Modify the kernel version
 #MODIFY_DEFAULT_KERNEL_VERSION() {
