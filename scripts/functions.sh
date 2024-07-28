@@ -58,15 +58,15 @@ echo "DISABLED: Changing default hostname"
 }
 
 ###  version replace
-#MODIFY_DEFAULT_VERSION() {
-#sed -i 's/-SNAPSHOT/.5/g' include/version.mk
-#}
+MODIFY_DEFAULT_VERSION() {
+sed -i 's/-SNAPSHOT/.5/g' include/version.mk
+}
 
 ###  Modify the kernel version
-#MODIFY_DEFAULT_KERNEL_VERSION() {
-#sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.4/g' target/linux/mvebu/Makefile
-#sed -i 's/KERNEL_TESTING_PATCHVER:=5.10/KERNEL_TESTING_PATCHVER:=5.4/g' target/linux/mvebu/Makefile
-#}
+MODIFY_DEFAULT_KERNEL_VERSION() {
+sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.4/g' target/linux/mvebu/Makefile
+sed -i 's/KERNEL_TESTING_PATCHVER:=5.10/KERNEL_TESTING_PATCHVER:=5.4/g' target/linux/mvebu/Makefile
+}
 
 ### Change the time zone
 CHANGE_TIMEZONE() {
@@ -110,7 +110,7 @@ CLONE_OPENWRT_SOURCE() {
     URL=https://github.com/openwrt/openwrt.git
     BRANCH=v22.03.5
     #COMMIT_HASH=ebb3faf31f7c34d71e8ffbf3e8d94bf92086188e
-    git clone "$URL" -b "$BRANCH" --single-branch --depth 1 openwrt 
+    git clone "$URL" -b "$BRANCH" openwrt 
     #git checkout "$COMMIT_HASH"
     ln -sf /workdir/openwrt "$GITHUB_WORKSPACE"/openwrt
     return
@@ -351,17 +351,17 @@ REMOVE_PO2LMO() {
 }
 
 ### Be careful when using this one, Can resort to build Failing
-REMOVE_PO() {
-  echo "Removing all Directorys containing po"
-  find ./package -name "po" | xargs rm -rf;
-}
+#REMOVE_PO() {
+  #echo "Removing all Directorys containing po"
+  #find ./package -name "po" | xargs rm -rf;
+#}
 
-REMOVE_LANGUAGES() {
-  echo "Removing All Languages except English"
+#REMOVE_LANGUAGES() {
+  #echo "Removing All Languages except English"
   #find ./feeds/luci/modules/luci-base/po/ ! -name 'en' -type d -exec rm -rf {} +
-  find ./package -name "po" | xargs rm -rf;
-  find ./feeds -name "po" | xargs rm -rf;
-}
+  #find ./package -name "po" | xargs rm -rf;
+  #find ./feeds -name "po" | xargs rm -rf;
+#}
 
 ### This should 100% safe to use
 REMOVE_SVN() {
