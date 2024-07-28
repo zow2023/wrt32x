@@ -69,13 +69,13 @@ env:
   PRINT_FAILLOGS: true
   VIEW_BUILD_LOGS: true
   SET_BUILDKEY: false
-  remove_languages: true
+  remove_languages: false
   USE_KMODS_SCRIPT: true
   USE_FILES: true
   USE_OpenWrtScripts: true
   USE_CUST_THEMES: true
   USE_CUSTOM_CONFIGURATION: true
-  USE_OPENWRT_PATCHES: true
+  USE_OPENWRT_PATCHES: false
   USE_PR_OPENWRT_PATCHES_NEW: false
   USE_PR_OPENWRT_PATCHES_PACKAGES_NEW: false
   USE_PR_OPENWRT_PATCHES: false
@@ -135,7 +135,7 @@ env:
   TARGET_DIRECTORY_A: packages
   TARGET_DIRECTORY_B: kmods/$KMOD_DIR
 ### --------------------------- ###
-  TZ: Europe/Madrid
+  TZ: Asia/Shanghai
   ARQUITECTURA: '${{ github.event.client_payload.message.ARQUITECTURA }}'
   config_file: '${{ github.event.client_payload.message.config_file }}'
   ISP: '${{ github.event.client_payload.message.ISP }}'
