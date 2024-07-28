@@ -42,7 +42,7 @@ echo "DISABLED: Changing default luci-theme-bootstap to luci-theme-opentomato"
 ###  Modify the default login IP address OpenWrt
 MODIFY_DEFAULT_IP() {
 echo "DISABLED: Changing default IP adress"
-#sed -i 's/192.168.1.1/10.0.0.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/10.0.0.1/g' package/base-files/files/bin/config_generate
 }
 
 ### Modify default PassWord
@@ -108,10 +108,10 @@ CLONE_OPENWRT_SOURCE() {
     df -hT "$PWD"
 
     URL=https://github.com/openwrt/openwrt.git
-    BRANCH=v22.03.5
-    #COMMIT_HASH=ebb3faf31f7c34d71e8ffbf3e8d94bf92086188e
-    git clone "$URL" -b "$BRANCH" openwrt 
-    #git checkout "$COMMIT_HASH"
+    BRANCH=openwrt-22.03
+    COMMIT_HASH=ebb3faf31f7c34d71e8ffbf3e8d94bf92086188e
+    #git clone "$URL" -b "$BRANCH" openwrt 
+    git checkout "$COMMIT_HASH"
     ln -sf /workdir/openwrt "$GITHUB_WORKSPACE"/openwrt
     return
 }
