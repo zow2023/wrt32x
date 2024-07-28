@@ -37,6 +37,5 @@ jobs:
               "SOURCE_DIRECTORY_A": "openwrt/bin/packages/arm_cortex-a9_vfpv3-d16",
               "SOURCE_DIRECTORY_B": "openwrt/bin/targets/mediatek/mt7622/kmods",
               "ARQUITECTURA": "mediatek/mt7622/",
-              "config_file": "rt3200.config",
-              "ISP": "none"
+              "config_file": "rt3200.config"
             }
