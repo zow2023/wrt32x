@@ -36,6 +36,7 @@ env:
   HARDWARE_DEVICE: '${{ github.event.client_payload.message.HARDWARE_DEVICE }}'
   CLONE_URL: https://github.com/openwrt/openwrt.git
   CLONE_BRANCH: openwrt-22.03
+  RESET_COMMIT_HASH: ebb3faf31f7c34d71e8ffbf3e8d94bf92086188e
   FEEDS_CONF: feeds.conf.default
   FUNCTIONS_SH: functions.sh
   DEPENDENCY_sh: dependency.sh
@@ -206,7 +207,10 @@ jobs:
           df -hT $PWD
           URL=$CLONE_URL
           BRANCH=$CLONE_BRANCH
+          COMMIT_HASH=$RESET_COMMIT_HASH
           git clone "$URL" -b "$BRANCH" openwrt
+          cd openwrt
+          git reset --hard "$COMMIT_HASH"
           ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
 ### ----------------------------------------------------------------- ###
       - name: Set build key
