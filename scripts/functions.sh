@@ -110,8 +110,9 @@ CLONE_OPENWRT_SOURCE() {
     URL=https://github.com/openwrt/openwrt.git
     BRANCH=openwrt-22.03
     COMMIT_HASH=ebb3faf31f7c34d71e8ffbf3e8d94bf92086188e
-    #git clone "$URL" -b "$BRANCH" openwrt 
-    git checkout "$COMMIT_HASH"
+    git clone "$URL" -b "$BRANCH" openwrt 
+    cd openwrt
+    git reset --hard "$COMMIT_HASH"
     ln -sf /workdir/openwrt "$GITHUB_WORKSPACE"/openwrt
     return
 }
