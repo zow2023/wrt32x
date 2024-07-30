@@ -35,7 +35,7 @@ env:
   HARDWARE_ID: '${{ github.event.client_payload.message.HARDWARE_ID }}'
   HARDWARE_DEVICE: '${{ github.event.client_payload.message.HARDWARE_DEVICE }}'
   CLONE_URL: https://github.com/openwrt/openwrt.git
-  #CLONE_BRANCH: openwrt-22.03
+  CLONE_BRANCH: v22.03.5
   #RESET_COMMIT_HASH: ebb3faf31f7c34d71e8ffbf3e8d94bf92086188e
   FEEDS_CONF: feeds.conf.default
   FUNCTIONS_SH: functions.sh
