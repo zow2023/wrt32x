@@ -71,7 +71,7 @@ sed -i 's/KERNEL_TESTING_PATCHVER:=5.10/KERNEL_TESTING_PATCHVER:=5.4/g' target/l
 ### Change the time zone
 CHANGE_TIMEZONE() {
 echo "DISABLED: Changing default time zone"
-#sed -i "s/'UTC'/'CST-8'\n        set system.@system[-1].zonename='Asia/Shanghai'/g" package/base-files/files/bin/config_generate
+sed -i "s/'UTC'/'CST-8'\n        set system.@system[-1].zonename='Asia/Shanghai'/g" package/base-files/files/bin/config_generate
 }
 
 ### ------------------------------------------------------------------------------------------------------- ###
@@ -108,11 +108,11 @@ CLONE_OPENWRT_SOURCE() {
     df -hT "$PWD"
 
     URL=https://github.com/openwrt/openwrt.git
-    BRANCH=openwrt-22.03
-    COMMIT_HASH=ebb3faf31f7c34d71e8ffbf3e8d94bf92086188e
+    BRANCH=v22.03.5
+#    COMMIT_HASH=ebb3faf31f7c34d71e8ffbf3e8d94bf92086188e
     git clone "$URL" -b "$BRANCH" openwrt 
-    cd openwrt
-    git reset --hard "$COMMIT_HASH"
+#    cd openwrt
+#    git reset --hard "$COMMIT_HASH"
     ln -sf /workdir/openwrt "$GITHUB_WORKSPACE"/openwrt
     return
 }
