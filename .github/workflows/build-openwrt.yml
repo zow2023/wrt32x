@@ -139,7 +139,7 @@ env:
   TZ: Asia/Shanghai
   ARQUITECTURA: '${{ github.event.client_payload.message.ARQUITECTURA }}'
   config_file: '${{ github.event.client_payload.message.config_file }}'
-  ISP: '${{ github.event.client_payload.message.ISP }}'
+  #ISP: '${{ github.event.client_payload.message.ISP }}'
 ### ----------------------------------------------------------------- ###
 ### ----------------------------------------------------------------- ###
 jobs:
@@ -198,7 +198,8 @@ jobs:
       - name: Get current date
         id: date
         run: |
-          echo "::set-output name=date::$(date +'%s')"
+          echo "date=$(date +'%s')" >> $GITHUB_ENV
+#          echo "::set-output name=date::$(date +'%s')"
 #          echo "{date}={$(date +'%s')}" >> $GITHUB_OUTPUT
 ### ----------------------------------------------------------------- ###
       - name: Clone OpenWRT source code
@@ -207,18 +208,18 @@ jobs:
           df -hT $PWD
           URL=$CLONE_URL
           BRANCH=$CLONE_BRANCH
-          #COMMIT_HASH=$RESET_COMMIT_HASH
+#          COMMIT_HASH=$RESET_COMMIT_HASH
           git clone "$URL" -b "$BRANCH" openwrt
-          #cd openwrt
-          #git reset --hard "$COMMIT_HASH"
+#          cd openwrt
+#          git reset --hard "$COMMIT_HASH"
           ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
 ### ----------------------------------------------------------------- ###
-      - name: Set build key
-        working-directory: '/workdir/openwrt'
-        if: env.SET_BUILDKEY == 'true' && !cancelled()
-        run: |
-            echo -e "${{ secrets.SNAPSHOT_SECKEY }}" > "key-build"
-            echo -e "${{ secrets.SNAPSHOT_PUBKEY }}" > "key-build.pub"
+#      - name: Set build key
+#        working-directory: '/workdir/openwrt'
+#        if: env.SET_BUILDKEY == 'true' && !cancelled()
+#        run: |
+#            echo -e "${{ secrets.SNAPSHOT_SECKEY }}" > "key-build"
+#           echo -e "${{ secrets.SNAPSHOT_PUBKEY }}" > "key-build.pub"
 ### ----------------------------------------------------------------- ###
       - name: Check Main space usage
         if: (!cancelled())
@@ -289,13 +290,13 @@ jobs:
           cd openwrt
           CHANGE_DEFAULT_BANNER
 ### ----------------------------------------------------------------- ###
-      - name: Reset Commit History To
-        if: env.RESET_OPENWRT_COMMIT == 'true' && !cancelled()
-        run: |
-          chmod +x scripts/$FUNCTIONS_SH
-          source scripts/$FUNCTIONS_SH
-          cd openwrt
-          RESET_COMMIT "771ea6f2e3868b208b5261ae676160d5ef6544e8"
+#      - name: Reset Commit History To
+#        if: env.RESET_OPENWRT_COMMIT == 'true' && !cancelled()
+#       run: |
+#          chmod +x scripts/$FUNCTIONS_SH
+#          source scripts/$FUNCTIONS_SH
+#          cd openwrt
+#          RESET_COMMIT "771ea6f2e3868b208b5261ae676160d5ef6544e8"
 ### ----------------------------------------------------------------- ###
       - name: Current Commit Before Feeds/Patches
         if: env.GITLOGA == 'true' && !cancelled()
@@ -366,15 +367,15 @@ jobs:
           cd openwrt && ./scripts/feeds uninstall $line
           done < "$file"
 ### ----------------------------------------------------------------- ###
-      - name: Developer (English language Only)
-        id: po-english
-        continue-on-error: true
-        if: env.remove_languages == 'true' && !cancelled()
-        run: |
-          chmod +x scripts/$FUNCTIONS_SH
-          source scripts/$FUNCTIONS_SH
-          cd openwrt
-          REMOVE_LANGUAGES
+#      - name: Developer (English language Only)
+#        id: po-english
+#        continue-on-error: true
+#        if: env.remove_languages == 'true' && !cancelled()
+#        run: |
+#          chmod +x scripts/$FUNCTIONS_SH
+#          source scripts/$FUNCTIONS_SH
+#          cd openwrt
+#         REMOVE_LANGUAGES
 ### ----------------------------------------------------------------- ###
       - name: Run Custom OpenWRT Patches
         id: COP
