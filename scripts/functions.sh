@@ -108,7 +108,7 @@ CLONE_OPENWRT_SOURCE() {
     df -hT "$PWD"
 
     URL=https://github.com/openwrt/openwrt.git
-    BRANCH=v22.03.5
+    BRANCH=master
 #    COMMIT_HASH=ebb3faf31f7c34d71e8ffbf3e8d94bf92086188e
     git clone "$URL" -b "$BRANCH" openwrt 
 #    cd openwrt
